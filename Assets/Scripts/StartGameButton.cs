@@ -1,6 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class StartGameButton
+public class StartGameMenu : MonoBehaviour
 {
-    
+    public void Playgame()
+    {
+        SceneManager.LoadSceneAsync("Game Level");
+    }
+
 }
