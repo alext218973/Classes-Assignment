@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int jumpForce = 10;  // Jump force for the player
-    public float moveSpeed = 5f; // Movement speed for the player
-    public LayerMask groundLayer; // The layer that represents the ground
+    public int jumpForce = 10;  
+    public float moveSpeed = 5f; 
+    public LayerMask groundLayer; 
 
-    private Rigidbody2D rb; // Reference to the Rigidbody2D component
-    private bool isGrounded; // Check if player is on the ground
+    private Rigidbody2D rb; 
+    private bool isGrounded;
 
     void Start()
     {
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         // Check if the player is touching the ground layer
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
-            isGrounded = true; // The player is grounded
+            isGrounded = true; 
         }
     }
 
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         // Check if the player stops touching the ground layer
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
-            isGrounded = false; // The player is no longer grounded
+            isGrounded = false; 
         }
     }
 }
