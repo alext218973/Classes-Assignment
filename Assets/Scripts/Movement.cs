@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    private Player player; 
-
+    private Player player;
+   
+    private Animator anim;
+    private string Run_ANIMATION = "run";
+    private string Jump_Animation = "jump";
     void Start()
     {
         // Get the Player script attached to the same GameObject
@@ -15,7 +18,10 @@ public class Movement : MonoBehaviour
         // Listen for Space key press to trigger jumping
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player.Jump(); 
+            player.Jump();
+            
+
+
         }
 
         // Get the horizontal input (left/right or A/D keys)
