@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
-    public bool Death = false;
+    private bool Death = false;
 
     private Vector2 targetPosition;
 
@@ -111,8 +111,8 @@ public class Player : MonoBehaviour
         if (Death == true){
             rb.transform.position = new Vector3(-21.13f, 9.7f, transform.position.z);
             Death = false;
-    } 
-        }
+        } 
+    }
 } 
 
 
