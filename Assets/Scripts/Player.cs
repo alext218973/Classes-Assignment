@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //Get animator component
         anim = GetComponent<Animator>();
-
+        //for flipping image
         sr=GetComponent<SpriteRenderer>();
     }
 
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         // Move the player by setting the Rigidbody2D velocity (keep the current Y velocity)
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-
+        //enable running animation
         if (moveInput > 0)
         {
             anim.SetBool(Run_ANIMATION, true);
@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
             isGrounded = false;
+            //jumping animation
             anim.SetBool(Jump_Animation, true);
         }
     }
