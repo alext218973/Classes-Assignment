@@ -5,9 +5,14 @@ public class Player : MonoBehaviour
     public int jumpForce = 10;
     public float moveSpeed = 5f;
     public LayerMask groundLayer;
+    public LayerMask deathLayer;
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private bool isGrounded;
+
+    public bool Death = false;
+
+    private Vector2 targetPosition;
 
 
     private Animator anim;
@@ -22,6 +27,8 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         //for flipping image
         sr=GetComponent<SpriteRenderer>();
+        // Player position
+        transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
     }
 
     // Method to handle jump logic
@@ -88,7 +95,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Detect when the player touches death object
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the player is touching the ground layer
+        if (((1 << collision.gameObject.layer) & deathLayer) != 0)
+        {
+            Death = true;
+
+        }
+    }
+
+    public void ResetPlayer()
+    {
+        if (Death == true){
+            rb.transform.position = new Vector3(-21.13f, 9.7f, transform.position.z);
+            Death = false;
+    } 
+        }
+} 
 
 
-}
+
+
 

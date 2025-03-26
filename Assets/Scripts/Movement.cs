@@ -3,6 +3,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Player player;
+
+    public bool Death;
    
 
     void Start()
@@ -17,10 +19,9 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.Jump();
-            
-
-
         }
+
+        player.ResetPlayer();
 
         // Get the horizontal input (left/right or A/D keys)
         float moveInput = Input.GetAxisRaw("Horizontal"); // Returns -1 for left, 1 for right, and 0 for no input
