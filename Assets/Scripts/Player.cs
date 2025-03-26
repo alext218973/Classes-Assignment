@@ -5,9 +5,14 @@ public class Player : MonoBehaviour
     public int jumpForce = 10;
     public float moveSpeed = 5f;
     public LayerMask groundLayer;
+    public LayerMask deathLayer;
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private bool isGrounded;
+
+    public bool Death = false;
+
+    private Vector2 targetPosition;
 
 
     private Animator anim;
@@ -20,8 +25,10 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //Get animator component
         anim = GetComponent<Animator>();
-
+        //for flipping image
         sr=GetComponent<SpriteRenderer>();
+        // Player position
+        transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
     }
 
     // Method to handle jump logic
@@ -43,7 +50,7 @@ public class Player : MonoBehaviour
         // Move the player by setting the Rigidbody2D velocity (keep the current Y velocity)
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-
+        //enable running animation
         if (moveInput > 0)
         {
             anim.SetBool(Run_ANIMATION, true);
@@ -83,11 +90,32 @@ public class Player : MonoBehaviour
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
             isGrounded = false;
+            //jumping animation
             anim.SetBool(Jump_Animation, true);
         }
     }
 
+    // Detect when the player touches death object
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the player is touching the ground layer
+        if (((1 << collision.gameObject.layer) & deathLayer) != 0)
+        {
+            Death = true;
+
+        }
+    }
+
+    public void ResetPlayer()
+    {
+        if (Death == true){
+            rb.transform.position = new Vector3(-21.13f, 9.7f, transform.position.z);
+            Death = false;
+    } 
+        }
+} 
 
 
-}
+
+
 
