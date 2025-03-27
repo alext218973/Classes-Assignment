@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         //for flipping image
         sr=GetComponent<SpriteRenderer>();
         // Player position
-        transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
+        transform.position = new Vector3(-21.13f, 9.7f, transform.position.z);
     }
 
     // Method to handle jump logic
