@@ -38,8 +38,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 132907621
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: assets
+    uniqueID: 1961114729
     locked: 0
   m_RenderingLayers:
   - Default
