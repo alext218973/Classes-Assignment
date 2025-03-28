@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -10,14 +11,14 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
-    private bool Death = false;
-
+    private bool Death;
     private Vector2 targetPosition;
 
 
     private Animator anim;
     private string Run_ANIMATION = "run";
     private string Jump_Animation = "jump";
+    private string Death_Animation ="dead";
 
     void Start()
     {
@@ -108,12 +109,23 @@ public class Player : MonoBehaviour
 
     public void ResetPlayer()
     {
-        if (Death == true){
-            rb.transform.position = new Vector3(-21.13f, 9.7f, transform.position.z);
-            Death = false;
-        } 
+        if (Death == true)
+        {
+            anim.SetBool(Death_Animation, true);
+            StartCoroutine(ResetAfterDelay(2.5f)); 
+        }
+    }
+
+    public IEnumerator ResetAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the animation to finish
+        rb.transform.position = new Vector3(-21.13f, 9.7f, transform.position.z);
+        anim.SetBool(Death_Animation, false);
+        Death = false;
     }
 } 
+
+
 
 
 
