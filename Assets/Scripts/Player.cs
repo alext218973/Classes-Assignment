@@ -121,6 +121,8 @@ public class Player : MonoBehaviour
         {
             // Load the "Win Screen" scene
             SceneManager.LoadScene(newWinScreen);
+            rb.transform.position = new Vector3(-21.13f, 9.7f, transform.position.z);
+            win = false;
         }
     }
 
