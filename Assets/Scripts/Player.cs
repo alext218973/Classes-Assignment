@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -12,12 +13,16 @@ public class Player : MonoBehaviour
 
     private bool Death = false;
 
+    private bool win = false;
+
     private Vector2 targetPosition;
 
 
     private Animator anim;
     private string Run_ANIMATION = "run";
     private string Jump_Animation = "jump";
+
+    [SerializeField] private string newWinScreen = "Win Screen";
 
     void Start()
     {
@@ -106,6 +111,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OCollisionEnter2D(Collision collision)
+    {
+        if (((1 << collision.gameObject.layer) & deathLayer) != 0)
+        {
+            win = true;
+        }
+    }
+
+    public void WinScreen(){
+        if (win == true){
+            SceneManager.LoadScene(newWinScreen);
+        }
+    }
     public void ResetPlayer()
     {
         if (Death == true){

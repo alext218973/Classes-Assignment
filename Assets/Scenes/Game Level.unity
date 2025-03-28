@@ -556,8 +556,8 @@ GameObject:
   - component: {fileID: 169661022}
   - component: {fileID: 169661021}
   - component: {fileID: 169661020}
-  m_Layer: 0
-  m_Name: Square (8)
+  m_Layer: 7
+  m_Name: Win Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
