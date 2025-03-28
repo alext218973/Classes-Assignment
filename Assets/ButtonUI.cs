@@ -4,9 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonUI : MonoBehaviour {
-    [SerializeField] private string newGameLevel = "Game Level";
+    [SerializeField] private string _newGameLevel = "Game Level";
 
     public void NewGameButton() {
-        SceneManager.LoadScene(newGameLevel);
+        SceneManager.LoadScene(_newGameLevel);
+    }
+}
+
+public class Program { 
+    public static void Main(string[] args) {
+        ButtonUI button = new ButtonUI();
+
+        button.NewGameButton();
     }
 }

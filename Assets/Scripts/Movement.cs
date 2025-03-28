@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
             player.Jump();
         }
 
+        player.WinScreen();
         player.ResetPlayer();
         // Get the horizontal input (left/right or A/D keys)
 
