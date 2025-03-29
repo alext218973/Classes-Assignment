@@ -34,7 +34,7 @@ public class MovingSpike : MonoBehaviour
     class MovingHorizontally
     {
 
-        private float _speed = 0.05f;
+        private float _speed = 0.001f;
         private float t;
 
         public float GetSpeed()
